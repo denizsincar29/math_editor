@@ -1,0 +1,26 @@
+#математика, действия, логорифмы и синусы:
+$${3x+5 \over 4x-3} \times {3x+4 \over 1}$$
+$$ax^3+bx^2+cx+d=0$$
+$$\sqrt{3}$$
+$$\sin{\pi \over 6} = 0,5$$
+$$\sin{60^\circ}/\cos{60^\circ} = \tan{60^\circ}$$
+#операторы сравнения:
+$$3<5$$
+$$2<\alpha<6$$
+$$\beta \ge \gamma$$
+$$\theta \le 0$$
+$$\phi \ne 0$$
+$$\pi \approx 3,141592$$
+#примеры из геометрии
+$$ab \perp cd \therefore \angle{abc} =90^\circ$$
+$$\angle{cab}+\angle{acb} = 180^\circ \therefore ab \parallel cd$$
+
+$$\triangle{abc} \angle{b}=90^\circ \because ab^2+bc^2=ac^2$$
+$$\overline{ab} \in \overrightarrow{cd} \in \overleftrightarrow{ef}$$
+#пример теоремы:
+катет прямоугольного треугольника равен половине гипотенузы \(\iff\) угол, противолежащий этому катету, \(=30^\circ\)
+# список знаков
+$$\parallel \perp \sim \cong$$
+$$\because \therefore \iff \implies \impliedby$$
+$$\in \not\in \subset \subsetneqq \not\subset \supset \supsetneqq \not\supset \cap \cup \emptyset \mathbb{N}\mathbb{R} \forall \exists$$
+\(\infty\)

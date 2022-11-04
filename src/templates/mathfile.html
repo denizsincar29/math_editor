@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{{title}}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script>
+let editshown=false;
+let a={
+"open":new Audio("../../static/open.wav"),
+"close":new Audio("../../static/close.wav")
+
+
+
+};
+
+async function edbox(){
+	if(editshown){
+		document.getElementById("btn").innerHTML="редактировать";
+		t1=document.getElementById("edt").value;
+		response=await fetch("/edt/{{rtitle}}.math", {method:'POST',body:t1});
+		document.getElementsByClassName('bod')[0].innerHTML =await response.text();
+		document.getElementsByClassName('bod')[0].focus();
+		MathJax.typeset();
+		editshown=false;
+	} else {
+		document.getElementById("btn").innerHTML="сохранить";
+		let response=await fetch("../../mathraw/{{rtitle}}.math")
+		let resp=await response.text();
+		document.getElementsByClassName('bod')[0].innerHTML ='<textarea accesskey=\"a\" name=\"edt\" id=\"edt\">'+(resp.toString().trim())+'</textarea> <br> <a href=\"../../del/{{title}}.math\">удалить файл</a>';
+
+		document.getElementById("edt").focus()
+		editshown=true;
+	}
+} // endfunction
+
+let re=""
+async function refresh(){
+	if(editshown){return;}
+	let response=await fetch("../../body/{{rtitle}}.math")
+	let resp=await response.text();
+	if(re!=resp){
+		re=resp;
+		document.getElementsByClassName('bod')[0].innerHTML =resp.toString().trim();
+		MathJax.typeset();
+	}
+}
+// set interval refresh
+document.addEventListener("DOMContentLoaded", function(){setInterval(refresh,10000);});
+document.addEventListener("keydown",(e)=> {if(e.key=="Escape") {if(editshown){a["close"].play();} else{a["open"].play();} edbox();}});
+document.addEventListener("DOMContentLoaded", function(){
+document.getElementById("btn").addEventListener("click",function(){if(editshown){a["close"].play();} else{a["open"].play();} edbox();});
+});
+
+</script>
+</head>
+<body>
+<button id="btn" name="btn">Редактировать</button><br>
+<div class="bod">{%autoescape false%}{{body}}{%endautoescape%}</div>
+</body>
+</html>
