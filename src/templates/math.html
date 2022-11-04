@@ -1,0 +1,29 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Математика</title>
+<script>
+function promp(){
+result=window.prompt("введите название документа");
+window.location.replace("../create/"+encodeURI(result));
+
+}
+</script>
+</head>
+<body>
+<h1>домашние задания</h1>
+<ul>
+<button onclick="promp()">создать файл</button>
+<h1>домашние задания</h1>
+<ul>
+{%for item in math%}
+<li><a href="math/{{item}}.math">{{item}}</a></li>
+{%endfor%}
+</ul>
+<h1>выгрузить файл математики на сайт</h1>
+<form method=post enctype=multipart/form-data>
+	<input type=file name=file required>
+	<input type=submit value=Выгрузить...>
+</form>
+</body>
+</html>
